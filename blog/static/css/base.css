@@ -1,4 +1,6 @@
-/* .sidebar{
-    margin-left: 70%;
-    background-color: blue;
-} */
+#sidebar {
+    background-color:#8d8d8d;
+}
+#content {
+    background-color: #efefef;
+}

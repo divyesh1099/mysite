@@ -13,8 +13,8 @@ class PostListView(ListView):
 
 def post_list(request):
     object_list = Post.published.all()
-    paginator = Paginator(object_list, 3) # 3 Posts in Each page
     page = request.GET.get('page')
+    paginator = Paginator(object_list, 3) # 3 Posts in Each page
     try:
         posts = paginator.page(page)
     except PageNotAnInteger:
@@ -78,4 +78,8 @@ def post_share(request, post_id):
             sent = True
     else:
         form = EmailPostForm()
-    return render(request, 'blog/post/share.html', {'post': post, 'form': form, 'sent': sent})
+    return render(request, 'blog/post/share.html', {
+        'post': post, 
+        'form': form, 
+        'sent': sent
+        })
