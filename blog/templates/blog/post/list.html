@@ -15,9 +15,10 @@
         </div>
     {% endfor %}
 </div>
+{{ posts }}
 {% endblock content %}
 {% block numberingpages %}
     <nav class="navbar fixed-bottom navbar-dark bg-light d-flex justify-content-center">
-        {% include "./pagination.html" with users=posts %}
+        {% include "./pagination.html" with page=posts %}
     </nav>
 {% endblock %}

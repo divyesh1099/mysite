@@ -13,8 +13,8 @@ class PostListView(ListView):
 
 def post_list(request):
     object_list = Post.published.all()
-    page = request.GET.get('page')
     paginator = Paginator(object_list, 3) # 3 Posts in Each page
+    page = request.GET.get('page')
     try:
         posts = paginator.page(page)
     except PageNotAnInteger:
@@ -23,10 +23,12 @@ def post_list(request):
     except EmptyPage:
         # If page is out of range then deliver the last page
         posts = paginator.page(paginator.num_pages)
+    print(page)
     return render(request, 'blog/post/list.html', {
         'page': page,
         'posts': posts, 
         })
+    
 
 def post_detail(request, year, month, day, post):
     post = get_object_or_404(
